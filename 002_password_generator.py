@@ -27,19 +27,19 @@ num_numeros = ask_for_number("¿Cuántos números quieres que tenga tu contrase�
         
         
 letras = random.choices(alphabet_list, k=num_letras)
-print(letras)
 simbolos = random.choices(simbolos_list, k=num_simbolos)
 numeros = random.choices(numeros_list, k=num_numeros)
 
-password = letras + simbolos + numeros
-print(password)
+
 # random.shuffle(password)
-indexes = [i for i in range(len(password))]
-password_ = ""
-for i in range(len(password)):
+indexes = [i for i in range(len(letras + simbolos + numeros))]
+password = ""
+
+while True:
     random_index = random.choice(indexes)
-    password_ += password[random_index]
+    password += password[random_index]
     indexes.remove(random_index)
-password = password_
+    if len(indexes) == 0:
+        break
 
 print(password)
