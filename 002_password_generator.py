@@ -8,7 +8,7 @@ import string
 import random
 
 alphabet_list = list(string.ascii_uppercase + string.ascii_lowercase)
-simbolos_list = list("#@_%&=+-[]")
+simbolos_list = list("#@_%&=+-[]^*")
 numeros_list = list("123456789")
 
 def ask_for_number(input_str):
@@ -31,13 +31,15 @@ simbolos = random.choices(simbolos_list, k=num_simbolos)
 numeros = random.choices(numeros_list, k=num_numeros)
 
 
-# random.shuffle(password)
-indexes = [i for i in range(len(letras + simbolos + numeros))]
+list_password = letras + simbolos + numeros
+# random.shuffle(list_password)
+indexes = [i for i in range(len(list_password))]
+
 password = ""
 
 while True:
     random_index = random.choice(indexes)
-    password += password[random_index]
+    password += list_password[random_index]
     indexes.remove(random_index)
     if len(indexes) == 0:
         break
